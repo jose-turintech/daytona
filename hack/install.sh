@@ -12,7 +12,7 @@ VERSION=${DAYTONA_SERVER_VERSION:-"latest"}
 BASE_URL=${DAYTONA_SERVER_DOWNLOAD_URL:-"https://download.daytona.io/daytona"}
 DESTINATION=${DAYTONA_PATH:-"/usr/local/bin"}
 CONFIRM_FLAG=false
-CURRENT_VERSION="v0.50.0"
+CURRENT_VERSION=$(daytona version 2>/dev/null)
 
 # Check for the -y flag
 for arg in "$@"; do
@@ -315,7 +315,7 @@ print_breaking_changes() {
     fi
 }
 
-UPDATED_VERSION="v0.50.0"
+UPDATED_VERSION=$(daytona version 2>/dev/null)
 read -r current_major current_minor current_patch <<< "$(parse_version "$CURRENT_VERSION")"
 read -r updated_major updated_minor updated_patch <<< "$(parse_version "$UPDATED_VERSION")"
 
