@@ -26,7 +26,7 @@ else {
 try {
     if (!(Test-Path -Path $destination)) {
         Write-Host "Creating installation directory at $destination"
-        New-Item -ItemType Directory -Force -Path $destination | Out-Null
+        New-Item -ItemType Directory -Force -Path $destination -ErrorAction Stop | Out-Null
     }
 } catch {
     Write-Error "Failed to create installation directory: $_"
